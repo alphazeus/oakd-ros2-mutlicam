@@ -29,6 +29,10 @@ Test the code by running the demo code
 python3 depthai_demo.py
 ```
 This should output the camera stream with RGB and depth camera windows.
+Install cv-bridge to support the multicam code
+```
+sudo apt-get install ros-(ROS version name)-cv-bridge
+```
 Now run the supported code
 ```
 python3 depthai_ros2_multicam.py
