@@ -8,7 +8,6 @@ from rclpy.node import Node
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
-import threading  #For running the nodes in paralled for each cameras
 
 class ImagePublisher(Node):
 
@@ -49,7 +48,6 @@ def createPipeline():
 def main(args=None):
     #initialize the rclpy library
     rclpy.init(args=args)
-    executor = rclpy.executors.MultiThreadedExecutor()
 
     with contextlib.ExitStack() as stack:
         deviceInfos = dai.Device.getAllAvailableDevices()
@@ -89,20 +87,13 @@ def main(args=None):
             cam_nodes.append(ImagePublisher(q_rgb, stream_name, str(len(cam_nodes))))
             print('Camera Node Created')
 
-        executor_thread = threading.Thread(target=executor.spin, daemon=True)
-        executor_thread.start()
-        rate = cam_nodes[0].create_rate(2)
-        try:
-            while rclpy.ok():
-                rate.sleep()
-        except KeyboardInterrupt:
-            pass
+        for node in cam_nodes:
+            rclpy.spin(node)
 
         for node in cam_nodes:
             node.destroy_node()
 
         rclpy.shutdown()
-        executor_thread.join()
 
 
 if __name__=='__main__':
