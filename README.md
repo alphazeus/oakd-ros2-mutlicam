@@ -8,7 +8,10 @@ Light weight code based on the library from Luxonis for OAK-D cameras. ROS2 vide
 - Support for multithreaded streaming on ROS2 topics
 
 Tested with four simultaneous OAK-D lite RGB cameras.
-
+## Dependencies
+- ROS2
+- Python: >3.9
+  
 ## How to use the library
 Install the ROS2 (Tested on ROS2 Humble)
 
