@@ -9,7 +9,7 @@ Light weight code based on the library from Luxonis for OAK-D cameras. ROS2 vide
 Tested with four simultaneous OAK-D lite RGB cameras.
 
 ## Dependencies
-- ROS2
+- ROS2 [tested on humble, shouls work on other distributions]
 - Python: >3.9
   
 ## How to use the library
