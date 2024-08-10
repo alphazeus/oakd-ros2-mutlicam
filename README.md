@@ -1,6 +1,6 @@
 # oakd-ros2-mutlicam
 
-Light weight code based on the library from Luxonis for OAK-D cameras. ROS2 video streaming based on OAK-D cameras.
+Light weight code based on the library from Luxonis for OAK-D cameras. ROS2 video streaming based on OAK-D cameras. Uses (Executors)[https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html] concept for the multithread support on this library. Executors helps in simultaneous spin of ros2 nodes.
 
 ### Feature additions
 - Publishing of RGB Camera stream over ROS2 topics
@@ -35,6 +35,6 @@ sudo apt-get install ros-(ROS version name)-cv-bridge
 ```
 Now run the supported code
 ```
-python3 depthai_ros2_multicam.py
+python3 depthai_ros2_multicam_multithread.py
 ```
 You should be able to see `/videoX` topics when you run `ros2 topic list` in a new terminal.
