@@ -9,6 +9,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
 import threading  #For running the nodes in paralled for each cameras
+import time
 
 class ImagePublisher(Node):
 
@@ -88,13 +89,15 @@ def main(args=None):
             #Creating Nodes for each camera detected
             cam_nodes.append(ImagePublisher(q_rgb, stream_name, str(len(cam_nodes))))
             print('Camera Node Created')
+            executor.add_node(cam_nodes[len(cam_nodes)-1])
 
         executor_thread = threading.Thread(target=executor.spin, daemon=True)
         executor_thread.start()
         rate = cam_nodes[0].create_rate(2)
         try:
             while rclpy.ok():
-                rate.sleep()
+                print('check')
+                time.sleep(2)
         except KeyboardInterrupt:
             pass
 
