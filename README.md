@@ -1,6 +1,6 @@
 # oakd-ros2-mutlicam
 
-Light weight code based on the library from Luxonis for OAK-D cameras. ROS2 video streaming based on OAK-D cameras. Uses (Executors)[https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html] concept for the multithread support on this library. Executors helps in simultaneous spin of ros2 nodes.
+Light weight code based on the library from Luxonis for OAK-D cameras. ROS2 video streaming based on OAK-D cameras. Uses [Executors](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html) concept for the multithread support on this library. Executors helps in simultaneous spin of ros2 nodes.
 
 ### Feature additions
 - Publishing of RGB Camera stream over ROS2 topics
